@@ -18,14 +18,6 @@
             width: 80px; /* Adjust the width as needed */
             height: auto; /* Maintain aspect ratio */
         }
-        #characte {
-            position: absolute;
-            top: 100px;
-            left: 0;
-            transition: left 6s linear;
-            width: 80px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
-        }
     </style>
 </head>
 <body>
@@ -42,13 +34,6 @@
         // Listen for input changes
         wordInput.addEventListener("input", checkWord);
 
-        if (correctWordsCount <1) {
-                    // Move the character to the right
-                    characte.style.left = "100%"; // You can adjust the percentage as needed
-                    correctWordsCount = 0;
-                    generateRandomWord();
-                }
-
         function checkWord() {
             const inputText = wordInput.value.toUpperCase();
             const targetText = targetWord.innerText;
@@ -57,15 +42,15 @@
                 correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount = 1) {
+                if (correctWordsCount >= 4) {
                     // Move the character to the right
-                    character.style.left = "10%"; // You can adjust the percentage as needed
+                    character.style.left = "80%"; // You can adjust the percentage as needed
                     correctWordsCount = 0;
                     generateRandomWord();
                 } else {
                     generateRandomWord();
                 }
-            } 
+            }
         }
 
         // Function to generate a random word for the user to type
