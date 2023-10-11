@@ -21,12 +21,13 @@
 <body>
     <h1>Type the word: <span id="targetWord">HELLO</span></h1>
     <input type="text" id="wordInput">
-    <div id="character">👾</div>
-
+    <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" id="character" alt="Character">
+    
     <script>
         const character = document.getElementById("character");
         const targetWord = document.getElementById("targetWord");
         const wordInput = document.getElementById("wordInput");
+        let correctWordsCount = 0;
 
         // Listen for input changes
         wordInput.addEventListener("input", checkWord);
@@ -36,10 +37,17 @@
             const targetText = targetWord.innerText;
 
             if (inputText === targetText) {
-                // Move the character to the right
-                character.style.left = "80%"; // You can adjust the percentage as needed
+                correctWordsCount++;
                 wordInput.value = ""; // Clear the input
-                generateRandomWord();
+
+                if (correctWordsCount >= 4) {
+                    // Move the character to the right
+                    character.style.left = "80%"; // You can adjust the percentage as needed
+                    correctWordsCount = 0;
+                    generateRandomWord();
+                } else {
+                    generateRandomWord();
+                }
             }
         }
 
