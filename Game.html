@@ -39,31 +39,18 @@
             const targetText = targetWord.innerText;
 
             if (inputText === targetText) {
-                correctWordsCount+1;
+                correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
                 if (correctWordsCount = 1) {
                     // Move the character to the right
-                    character.style.left = "25%"; // You can adjust the percentage as needed
+                    character.style.left = "10%"; // You can adjust the percentage as needed
                     correctWordsCount = 0;
                     generateRandomWord();
                 } else {
                     generateRandomWord();
                 }
             } 
-            if (inputText === targetText) {
-                correctWordsCount+1;
-                wordInput.value = ""; // Clear the input
-
-                if (correctWordsCount = 2) {
-                    // Move the character to the right
-                    character.style.left = "50%"; // You can adjust the percentage as needed
-                    correctWordsCount = 0;
-                    generateRandomWord();
-                } else {
-                    generateRandomWord();
-                }
-            }
         }
 
         // Function to generate a random word for the user to type
