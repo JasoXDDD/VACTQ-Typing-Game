@@ -45,15 +45,20 @@
                 if (correctWordsCount = 1) {
                     // Move the character to the right
                     character.style.left = "25%"; // You can adjust the percentage as needed
-                    correctWordsCount = 1;
+                    correctWordsCount = 0;
                     generateRandomWord();
                 } else {
                     generateRandomWord();
                 }
+            } 
+            if (inputText === targetText) {
+                correctWordsCount++;
+                wordInput.value = ""; // Clear the input
+
                 if (correctWordsCount = 2) {
                     // Move the character to the right
                     character.style.left = "50%"; // You can adjust the percentage as needed
-                    correctWordsCount = 2;
+                    correctWordsCount = 0;
                     generateRandomWord();
                 } else {
                     generateRandomWord();
