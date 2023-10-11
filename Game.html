@@ -14,7 +14,7 @@
             position: absolute;
             top: 100px;
             left: 0;
-            transition: left 1s linear;
+            transition: left "targetWord" linear;
             width: 80px; /* Adjust the width as needed */
             height: auto; /* Maintain aspect ratio */
         }
@@ -30,6 +30,7 @@
         const targetWord = document.getElementById("targetWord");
         const wordInput = document.getElementById("wordInput");
         let correctWordsCount = 0;
+        let transition = 0.2;
 
         // Listen for input changes
         wordInput.addEventListener("input", checkWord);
@@ -39,7 +40,7 @@
             const targetText = targetWord.innerText;
 
             if (inputText === targetText) {
-                correctWordsCount++;
+                transition++;
                 wordInput.value = ""; // Clear the input
 
                 if (correctWordsCount = 1) {
