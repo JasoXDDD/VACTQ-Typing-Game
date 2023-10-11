@@ -14,9 +14,9 @@
             position: absolute;
             top: 100px;
             left: 0;
-            transition: left 2s linear;
-            width: 80px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
+            transition: left 20s linear; /* Slow character movement */
+            width: 80px;
+            height: auto;
         }
     </style>
 </head>
@@ -43,11 +43,14 @@
                 wordInput.value = ""; // Clear the input
 
                 if (correctWordsCount >= 4) {
-                    // Move the character to the right
+                    // Move the character to the right and give it a boost
+                    character.style.transition = "left 1s linear"; // Faster movement
                     character.style.left = "80%"; // You can adjust the percentage as needed
                     correctWordsCount = 0;
                     generateRandomWord();
                 } else {
+                    // Give the character a boost
+                    character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
                     generateRandomWord();
                 }
             }
