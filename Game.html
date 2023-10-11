@@ -14,7 +14,15 @@
             position: absolute;
             top: 100px;
             left: 0;
-            transition: left "targetWord" linear;
+            transition: left 2s linear;
+            width: 80px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+        #characte {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            transition: left 6s linear;
             width: 80px; /* Adjust the width as needed */
             height: auto; /* Maintain aspect ratio */
         }
@@ -30,17 +38,23 @@
         const targetWord = document.getElementById("targetWord");
         const wordInput = document.getElementById("wordInput");
         let correctWordsCount = 0;
-        let transition = 0.2;
 
         // Listen for input changes
         wordInput.addEventListener("input", checkWord);
+
+        if (correctWordsCount <1) {
+                    // Move the character to the right
+                    characte.style.left = "100%"; // You can adjust the percentage as needed
+                    correctWordsCount = 0;
+                    generateRandomWord();
+                }
 
         function checkWord() {
             const inputText = wordInput.value.toUpperCase();
             const targetText = targetWord.innerText;
 
             if (inputText === targetText) {
-                transition++;
+                correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
                 if (correctWordsCount = 1) {
