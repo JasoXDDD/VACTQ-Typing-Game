@@ -42,10 +42,10 @@
                 correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount >= 4) {
+                if (correctWordsCount >= 1) {
                     // Move the character to the right and give it a boost
                     character.style.transition = "left 1s linear"; // Faster movement
-                    character.style.left = "80%"; // You can adjust the percentage as needed
+                    character.style.left = "0%"; // You can adjust the percentage as needed
                     correctWordsCount = 0;
                     generateRandomWord();
                 } else {
