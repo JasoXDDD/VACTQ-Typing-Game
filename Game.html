@@ -14,6 +14,7 @@
             position: absolute;
             top: 100px;
             left: 0;
+            transition: left 2s linear; /* Initial slow character movement */
             width: 80px;
             height: auto;
         }
@@ -40,8 +41,9 @@
                 wordInput.value = ""; // Clear the input
 
                 // Move the character 10% to the right
-                const currentLeft = parseInt(character.style.left || 0, 10);
-                character.style.left = currentLeft + 10 + "%";
+                const currentLeft = parseInt(character.style.left);
+                const newLeft = currentLeft + 10;
+                character.style.left = `${newLeft}%`;
                 generateRandomWord();
             }
         }
