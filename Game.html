@@ -10,34 +10,23 @@
             text-align: center;
         }
 
-        #characters-container {
-            position: relative;
-        }
-
-        .character {
+        #character {
             position: absolute;
             top: 100px;
             left: 0;
-            transition: left 20s linear; /* Slow character movement */
-            width: 80px;
-            height: auto;
-        }
-
-        #character2 {
-            transition: left 19s linear; /* Slightly delayed movement for character2 */
+            width: 80px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            transition: left 6s linear; /* Slow initial pace */
         }
     </style>
 </head>
 <body>
     <h1>Type the word: <span id="targetWord">HELLO</span></h1>
     <input type="text" id="wordInput">
-    <div id="characters-container">
-        <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" class="character" alt="Character" id="character">
-        <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" class="character" alt="Character" id="character2">
-    </div>
+    <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" id="character" alt="Character">
     
     <script>
-        const characters = document.querySelectorAll(".character");
+        const character = document.getElementById("character");
         const targetWord = document.getElementById("targetWord");
         const wordInput = document.getElementById("wordInput");
         let correctWordsCount = 0;
@@ -54,22 +43,17 @@
                 wordInput.value = ""; // Clear the input
 
                 if (correctWordsCount >= 4) {
-                    // Move the characters to the right and give them a boost
-                    for (let i = 0; i < characters.length; i++) {
-                        const character = characters[i];
-                        character.style.transition = "left 1s linear"; // Faster movement
-                        character.style.left = "80%"; // You can adjust the percentage as needed
-                    }
+                    // Give a little boost when 4 words are typed correctly
+                    character.style.transition = "left 2s linear";
+                    character.style.left = "80%";
                     correctWordsCount = 0;
-                    generateRandomWord();
                 } else {
-                    // Give the characters a boost
-                    for (let i = 0; i < characters.length; i++) {
-                        const character = characters[i];
-                        character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
-                    }
-                    generateRandomWord();
+                    // Incrementally boost the character
+                    const currentLeft = parseFloat(character.style.left);
+                    character.style.left = currentLeft + 5 + "%";
                 }
+                
+                generateRandomWord();
             }
         }
 
