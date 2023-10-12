@@ -42,16 +42,18 @@
                 correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount >= 1) {
+                if (correctWordsCount = 1) {
                     // Give a little boost when 4 words are typed correctly
                     character.style.transition = "left 2s linear";
                     character.style.left = "10%";
-                    correctWordsCount = 0;
-                } else {
-                    // Incrementally boost the character
-                    const currentLeft = parseFloat(character.style.left);
-                    character.style.left = currentLeft + 5 + "%";
-                }
+                    correctWordsCount = 1;
+                } 
+                if (correctWordsCount = 2) {
+                    // Give a little boost when 4 words are typed correctly
+                    character.style.transition = "left 2s linear";
+                    character.style.left = "10%";
+                    correctWordsCount = 2;
+                } 
                 
                 generateRandomWord();
             }
@@ -59,7 +61,7 @@
 
         // Function to generate a random word for the user to type
         function generateRandomWord() {
-            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVASCRIPT"];
+            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVA"];
             const randomIndex = Math.floor(Math.random() * words.length);
             targetWord.innerText = words[randomIndex];
         }
