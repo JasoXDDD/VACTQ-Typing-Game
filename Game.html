@@ -10,43 +10,37 @@
             text-align: center;
         }
 
-        .characters-container {
+        #characters-container {
             position: relative;
         }
 
         .character {
             position: absolute;
             top: 100px;
+            left: 0;
+            transition: left 20s linear; /* Slow character movement */
             width: 80px;
             height: auto;
         }
 
-        #character1 {
-            left: 0;
-            transition: left 2s linear; /* Initial slow character movement */
-        }
-
         #character2 {
-            left: 0;
-            transform: scaleY(-1); /* Mirror the character */
-            transform-origin: center bottom;
-            transition: left 2s linear; /* Initial slow character movement */
+            transition: left 19s linear; /* Slightly delayed movement for character2 */
         }
     </style>
 </head>
 <body>
-    <div class="characters-container">
-        <h1>Type the word: <span id="targetWord">HELLO</span></h1>
-        <input type="text" id="wordInput">
-        <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" id="character1" class="character" alt="Character 1">
-        <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" id="character2" class="character" alt="Character 2">
+    <h1>Type the word: <span id="targetWord">HELLO</span></h1>
+    <input type="text" id="wordInput">
+    <div id="characters-container">
+        <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" class="character" alt="Character" id="character">
+        <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" class="character" alt="Character" id="character2">
     </div>
-
+    
     <script>
-        const character1 = document.getElementById("character1");
-        const character2 = document.getElementById("character2");
+        const characters = document.querySelectorAll(".character");
         const targetWord = document.getElementById("targetWord");
         const wordInput = document.getElementById("wordInput");
+        let correctWordsCount = 0;
 
         // Listen for input changes
         wordInput.addEventListener("input", checkWord);
@@ -56,20 +50,26 @@
             const targetText = targetWord.innerText;
 
             if (inputText === targetText) {
+                correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                // Move the characters 10% to the right with a 1-second delay for character2
-                const currentLeft1 = parseInt(character1.style.left);
-                const currentLeft2 = parseInt(character2.style.left);
-                const newLeft1 = currentLeft1 + 10;
-                const newLeft2 = currentLeft2 + 10;
-                character1.style.left = `${newLeft1}%`;
-                
-                setTimeout(() => {
-                    character2.style.left = `${newLeft2}%`;
-                }, 1000); // 1-second delay for character2
-
-                generateRandomWord();
+                if (correctWordsCount >= 4) {
+                    // Move the characters to the right and give them a boost
+                    for (let i = 0; i < characters.length; i++) {
+                        const character = characters[i];
+                        character.style.transition = "left 1s linear"; // Faster movement
+                        character.style.left = "80%"; // You can adjust the percentage as needed
+                    }
+                    correctWordsCount = 0;
+                    generateRandomWord();
+                } else {
+                    // Give the characters a boost
+                    for (let i = 0; i < characters.length; i++) {
+                        const character = characters[i];
+                        character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
+                    }
+                    generateRandomWord();
+                }
             }
         }
 
