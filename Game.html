@@ -42,10 +42,10 @@
                 correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount >= 4) {
+                if (correctWordsCount >= 1) {
                     // Give a little boost when 4 words are typed correctly
                     character.style.transition = "left 2s linear";
-                    character.style.left = "80%";
+                    character.style.left = "10%";
                     correctWordsCount = 0;
                 } else {
                     // Incrementally boost the character
