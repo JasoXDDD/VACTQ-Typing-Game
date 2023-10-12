@@ -14,7 +14,6 @@
             position: absolute;
             top: 100px;
             left: 0;
-            transition: left 20s linear; /* Slow character movement */
             width: 80px;
             height: auto;
         }
@@ -29,7 +28,6 @@
         const character = document.getElementById("character");
         const targetWord = document.getElementById("targetWord");
         const wordInput = document.getElementById("wordInput");
-        let correctWordsCount = 0;
 
         // Listen for input changes
         wordInput.addEventListener("input", checkWord);
@@ -39,48 +37,18 @@
             const targetText = targetWord.innerText;
 
             if (inputText === targetText) {
-                correctWordsCount+1;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount = 1) {
-                    // Move the character to the right and give it a boost
-                    character.style.transition = "left 1s linear"; // Faster movement
-                    character.style.left = "10%"; // You can adjust the percentage as needed
-                    correctWordsCount = 0;
-                    generateRandomWord();
-                } else {
-                    // Give the character a boost
-                    character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
-                    generateRandomWord();
-                }
-                if (correctWordsCount = 2) {
-                    // Move the character to the right and give it a boost
-                    character.style.transition = "left 1s linear"; // Faster movement
-                    character.style.left = "20%"; // You can adjust the percentage as needed
-                    correctWordsCount = 0;
-                    generateRandomWord();
-                } else {
-                    // Give the character a boost
-                    character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
-                    generateRandomWord();
-                }
-                if (correctWordsCount = 3) {
-                    // Move the character to the right and give it a boost
-                    character.style.transition = "left 1s linear"; // Faster movement
-                    character.style.left = "20%"; // You can adjust the percentage as needed
-                    correctWordsCount = 0;
-                    generateRandomWord();
-                } else {
-                    // Give the character a boost
-                    character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
-                    generateRandomWord();
-                }
+                // Move the character 10% to the right
+                const currentLeft = parseInt(character.style.left || 0, 10);
+                character.style.left = currentLeft + 10 + "%";
+                generateRandomWord();
             }
         }
 
         // Function to generate a random word for the user to type
         function generateRandomWord() {
-            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVA"];
+            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVASCRIPT"];
             const randomIndex = Math.floor(Math.random() * words.length);
             targetWord.innerText = words[randomIndex];
         }
