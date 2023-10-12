@@ -1,61 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        
-      
-          <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-      
-          <meta name="apple-mobile-web-app-title" content="CodePen">
-      
-          <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-      
-          <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
-      
-      
-      
-        
-          <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-      
-      
-        <title>CodePen - Infinite moving background</title>
-      
-          <link rel="canonical" href="https://codepen.io/MrRayures/pen/DwPNmB">
-        
-        
-        
-        
-      <style>
-      .moo {
-        height: 900px;
-        width: 100%;
-        background: url("https://3.bp.blogspot.com/-RaXRORrsW6A/UZ0DfivwEhI/AAAAAAAAAcg/NJj1oL4uRE4/s320/Forest_Repeatable_Background.jpg") repeat-x left top;
-      }
-      </style>
-      
-        <script>
-        window.console = window.console || function(t) {};
-      </script>
-      
-        
-        
-      </head>
-      
-      <body translate="no">
-        <div class="moo"></div>
-        <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-            <script id="rendered-js" >
-      position = 0;
-      var interval = setInterval(function () {
-        position -= 1;
-        $(".moo").css({ "background-position": +position + "px 0px" });}, 50);
-      //# sourceURL=pen.js
-          </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Typing Game</title>
     <style>
+            .moo {
+        height: 900px;
+        width: 100%;
+        background: url("https://3.bp.blogspot.com/-RaXRORrsW6A/UZ0DfivwEhI/AAAAAAAAAcg/NJj1oL4uRE4/s320/Forest_Repeatable_Background.jpg") repeat-x left top;
+      }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -117,65 +71,20 @@
         // Initialize the game
         generateRandomWord();
     </script>
+            <script>
+                window.console = window.console || function(t) {};
+              </script>
+          <body translate="no">
+            <div class="moo"></div>
+            <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+                <script id="rendered-js" >
+          position = 0;
+          var interval = setInterval(function () {
+            position -= 1;
+            $(".moo").css({ "background-position": +position + "px 0px" });}, 50);
+          //# sourceURL=pen.js
+              </script>
 </body>
 </html>
 
-<!DOCTYPE html>
-<html lang="en" >
 
-<head>
-  <meta charset="UTF-8">
-  
-
-    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-
-    <meta name="apple-mobile-web-app-title" content="CodePen">
-
-    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-
-    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
-
-
-
-  
-    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-
-
-  <title>CodePen - Infinite moving background</title>
-
-    <link rel="canonical" href="https://codepen.io/MrRayures/pen/DwPNmB">
-  
-  
-  
-  
-<style>
-.moo {
-  height: 900px;
-  width: 100%;
-  background: url("https://3.bp.blogspot.com/-RaXRORrsW6A/UZ0DfivwEhI/AAAAAAAAAcg/NJj1oL4uRE4/s320/Forest_Repeatable_Background.jpg") repeat-x left top;
-}
-</style>
-
-  <script>
-  window.console = window.console || function(t) {};
-</script>
-
-  
-  
-</head>
-
-<body translate="no">
-  <div class="moo"></div>
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-      <script id="rendered-js" >
-position = 0;
-var interval = setInterval(function () {
-  position -= 1;
-  $(".moo").css({ "background-position": +position + "px 0px" });}, 50);
-//# sourceURL=pen.js
-    </script>
-
-  
-</body>
-
-</html>
