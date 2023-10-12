@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Typing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .character {
+            position: absolute;
+            top: 100px;
+            width: 80px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            transition: left 6s linear; /* Slow initial pace */
+        }
+    </style>
+</head>
+<body>
+    <h1>Type the word: <span id="targetWord">HELLO</span></h1>
+    <input type="text" id="wordInput">
+    <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" id="character" alt="Character">
+    <img src="https://static.vecteezy.com/system/resources/previews/001/193/930/non_2x/vintage-car-png.png" class="character" alt="Character">
+
+    <script>
+        const characters = document.querySelectorAll(".character");
+        const targetWord = document.getElementById("targetWord");
+        const wordInput = document.getElementById("wordInput");
+        let correctWordsCount = 0;
+
+        // Listen for input changes
+        wordInput.addEventListener("input", checkWord);
+
+        function checkWord() {
+            const inputText = wordInput.value.toUpperCase();
+            const targetText = targetWord.innerText;
+
+            if (inputText == targetText) {
+                correctWordsCount++;
+                wordInput.value = ""; // Clear the input
+
+                characters.forEach((character, index) => {
+                    const delay = 500 * index; // 0.5-second delay for each character
+                    setTimeout(() => {
+                        if (correctWordsCount === index) {
+                            character.style.transition = "left 2s linear";
+                            character.style.left = `${(10 + 10 * index)}%`; // Adjust the position
+                        }
+                    }, delay);
+                });
+
+                generateRandomWord();
+            }
+        }
+
+        // Function to generate a random word for the user to type
+        function generateRandomWord() {
+            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVA"];
+            const randomIndex = Math.floor(Math.random() * words.length);
+            targetWord.innerText = words[randomIndex];
+        }
+
+        // Initialize the game
+        generateRandomWord();
+    </script>
+</body>
+</html>
