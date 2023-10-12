@@ -42,7 +42,7 @@
                 correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount >= 1) {
+                if (correctWordsCount = 1) {
                     // Move the character to the right and give it a boost
                     character.style.transition = "left 1s linear"; // Faster movement
                     character.style.left = "10%"; // You can adjust the percentage as needed
@@ -50,7 +50,18 @@
                     generateRandomWord();
                 } else {
                     // Give the character a boost
-                    character.style.left = parseInt(character.style.left) + 5 + "20%"; // You can adjust the boost distance
+                    character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
+                    generateRandomWord();
+                }
+                if (correctWordsCount = 2) {
+                    // Move the character to the right and give it a boost
+                    character.style.transition = "left 1s linear"; // Faster movement
+                    character.style.left = "20%"; // You can adjust the percentage as needed
+                    correctWordsCount = 0;
+                    generateRandomWord();
+                } else {
+                    // Give the character a boost
+                    character.style.left = parseInt(character.style.left) + 5 + "%"; // You can adjust the boost distance
                     generateRandomWord();
                 }
             }
