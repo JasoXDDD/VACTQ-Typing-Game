@@ -38,11 +38,11 @@
             const inputText = wordInput.value.toUpperCase();
             const targetText = targetWord.innerText;
 
-            if (inputText === targetText) {
+            if (inputText == targetText) {
                 correctWordsCount++;
                 wordInput.value = ""; // Clear the input
 
-                if (correctWordsCount = 1) {
+                if (correctWordsCount == 1) {
                     // Give a little boost when 4 words are typed correctly
                     character.style.transition = "left 2s linear";
                     character.style.left = "10%";
@@ -52,7 +52,7 @@
                     const currentLeft = parseFloat(character.style.left);
                     character.style.left = currentLeft + 5 + "%";
                 }
-                if (correctWordsCount = 2) {
+                if (correctWordsCount == 2) {
                     // Give a little boost when 4 words are typed correctly
                     character.style.transition = "left 2s linear";
                     character.style.left = "20%";
