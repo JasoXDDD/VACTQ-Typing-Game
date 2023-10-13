@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Join Race</title>
+  <style>
+    body {
+      background-image: url("background.jpg");
+      background-color: rgba(0, 0, 0, 0.5);
+      background-blur: 5px;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+      height: 300px;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    h1 {
+      color: #fff;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .subtext {
+      color: #fff;
+      font-size: 14px;
+    }
+    .button {
+        display:flex; 
+        justify-content:center; 
+        align-items:center; 
+        width:100px; 
+        height:30px; 
+        border-radius:10px; 
+        background-color:red; 
+        color:white; 
+        font-weight:bold; 
+        cursor:pointer
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>VACTQ Racers</h1>
+      <input type="text" placeholder="Username">
+      <div class="button">Join Race!</div>
+      <p class="subtext">0/8 players</p>
+    </div>
+  </div>
+</body>
+</html>
