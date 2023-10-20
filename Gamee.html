@@ -35,15 +35,29 @@
             drawCharacters();
             requestAnimationFrame(update);
         }
-
+        function moveCharacter(index, pos) {
+            
+        }
         document.addEventListener("keydown", (event) => {
-            if (event.key === " ") {
-                for (let i = 0; i < characters.length; i++) {
-                    characters[i].x += characterSpeed;
-                    
-                    if (characters[i].x > canvas.width) {
-                        characters[i].x = 0;
-                    }
+            if (event.key === "A") {
+                characters[0].x += characterSpeed;
+                if (characters[0].x > canvas.width) {
+                    characters[0].x = 0;
+                }
+            } else if (event.key === "S") {
+                characters[1].x += characterSpeed;
+                if (characters[1].x > canvas.width) {
+                    characters[1].x = 0;
+                }
+            } else if (event.key === "D") {
+                characters[2].x += characterSpeed;
+                if (characters[2].x > canvas.width) {
+                    characters[2].x = 0;
+                }
+            } else if (event.key === "F") {
+                characters[3].x += characterSpeed;
+                if (characters[3].x > canvas.width) {
+                    characters[3].x = 0;
                 }
             }
         });
