@@ -15,5 +15,3 @@ class Player {
         this.progress = positionData[this.index];
     }
 }
-
-
