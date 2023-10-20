@@ -12,8 +12,6 @@
 
         const characterWidth = 30;
         const characterHeight = 30;
-        const characterSpeed = 1;
-
         const characters = [
             { x: 0, y: 250 },
             { x: 0, y: 300 },
@@ -21,7 +19,7 @@
             { x: 0, y: 400 }
         ];
 
-        const speeds = [0, 0, 0, 0];
+        const characterSpeed = canvas.width * 0.1;
 
         function drawCharacters() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -34,14 +32,6 @@
         }
 
         function update() {
-            for (let i = 0; i < characters.length; i++) {
-                characters[i].x += speeds[i];
-
-                if (characters[i].x > canvas.width) {
-                    characters[i].x = 0;
-                }
-            }
-
             drawCharacters();
             requestAnimationFrame(update);
         }
@@ -49,15 +39,11 @@
         document.addEventListener("keydown", (event) => {
             if (event.key === " ") {
                 for (let i = 0; i < characters.length; i++) {
-                    speeds[i] = characterSpeed;
-                }
-            }
-        });
-
-        document.addEventListener("keyup", (event) => {
-            if (event.key === " ") {
-                for (let i = 0; i < characters.length; i++) {
-                    speeds[i] = 0;
+                    characters[i].x += characterSpeed;
+                    
+                    if (characters[i].x > canvas.width) {
+                        characters[i].x = 0;
+                    }
                 }
             }
         });
