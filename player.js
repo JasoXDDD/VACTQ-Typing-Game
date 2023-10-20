@@ -1,5 +1,3 @@
-const stepAmount = 5;
-
 class Player {
     current_progress;
     constructor(index) {
