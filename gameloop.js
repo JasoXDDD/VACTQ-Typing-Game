@@ -34,12 +34,12 @@ function updatePositions(positionData) {
     });
 }
 
-updatePositions(getAPIData());
-
 //Game Loop
-
 function tick() {
     updatePositions(getAPIData());
+
+    //Update cars animations
+    
 }
 
 let interval = setInterval(tick, tickRate);
