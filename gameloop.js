@@ -15,6 +15,7 @@ class Player {
 
 //Customizable game rules
 const numberOfPlayers = 4;
+const tickRate = 1000;
 
 //Initialize frontend player objects
 let players = [];
@@ -35,4 +36,10 @@ function updatePositions(positionData) {
 
 updatePositions(getAPIData());
 
+//Game Loop
 
+function tick() {
+    updatePositions(getAPIData());
+}
+
+let interval = setInterval(tick, tickRate);
