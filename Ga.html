@@ -1,152 +1,80 @@
 
-
 <!DOCTYPE html>
-<html lang="en" >
+<html lang='en' class=''>
 
 <head>
-  <meta charset="UTF-8">
 
-  <title>Game</title>
-  
+  <meta charset='UTF-8'>
+  <title>CodePen Demo</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+  <meta name="robots" content="noindex">
 
-.jt {
-  position: relative;
-  font-size: 20vmin;
-  font-family: 'Staatliches', sans-serif;
-  text-transform: uppercase;
-  font-display: swap;
-  text-shadow: 0 0 10px tomato;
-}
-
-.jt__row {
-  display: block;
-}
-.jt__row:nth-child(1) {
-  clip-path: polygon(-10% 75%, 110% 75%, 110% 110%, -10% 110%);
-}
-.jt__row:nth-child(2) {
-  clip-path: polygon(-10% 50%, 110% 50%, 110% 75.3%, -10% 75.3%);
-}
-.jt__row:nth-child(3) {
-  clip-path: polygon(-10% 25%, 110% 25%, 110% 50.3%, -10% 50.3%);
-}
-.jt__row:nth-child(4) {
-  clip-path: polygon(-10% 0%, 110% 0%, 110% 25.3%, -10% 25.3%);
-}
-
-.jt__row.jt__row--sibling {
-  position: absolute;
-  top: 0;
-  left: 0;
-  user-select: none;
-  width:800px;
-}
-
-.jt__text {
-  display: block;
-  transform-origin: bottom left;
-  animation: moveIn 2s 0s cubic-bezier(.36,0,.06,1) alternate infinite ;
-}
-.jt__row:nth-child(1) .jt__text {
-  transform: translateY(-0.1em);
-}
-.jt__row:nth-child(2) .jt__text {
-  transform: translateY(-0.3em) scaleY(1.1);
-}
-.jt__row:nth-child(3) .jt__text {
-  transform: translateY(-0.5em) scaleY(1.2) ;
-}
-.jt__row:nth-child(4) .jt__text {
-  transform: translateY(-0.7em) scaleY(1.3) ;
-}
-.jt__row:nth-child(5) .jt__text {
-  transform: translateY(-0.9em) scaleY(1.4) ;
-}
-.jt__row:nth-child(6) .jt__text {
-  transform: translateY(-1.1em) scaleY(1.5) ;
-}
-
-@keyframes moveIn {
-  50%, 100% { 
-    transform: translateY(0em)
-  }
-  0%   { 
-  opacity: 0; 
-  filter: blur(10px);
-  
-  }
-  100% { 
-  opacity: 1; 
-  filter: blur(0px);
-  }
-}
-
-
-
-.debug .jt__row:nth-child(even) {
-  color: black;
-  background: white;
-}
-.debug .jt__row:nth-child(odd) {
-  color: white;
-  background: black;
-}
-
-* { box-sizing: border-box }
-
-html, body {
-  margin: 0;
-  background: black;
-  color: tomato;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-</style>
-
-  <script>
-  window.console = window.console || function(t) {};
-</script>
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+  <link rel="canonical" href="https://codepen.io/gigtieup/pen/RwvNKad">
 
   
   
+
+  <style id="INLINE_PEN_STYLESHEET_ID">
+    body {
+	padding: 0;
+	margin: 0;
+}
+
+.link {
+	padding: 0 10px;
+}
+
+.container {
+	width: 100%;
+	height: 32.6vw;
+	background: url('') repeat-x;
+	background-size: 50%;
+	animation: scroll-anim 15s linear infinite;
+}
+
+.container::before {
+	content: "";
+	width: 100%;
+	height: 92.6vw;
+	position: absolute;
+	background: url('https://t3.ftcdn.net/jpg/03/38/86/46/360_F_338864640_S2uVXvpn7ZnilgD8WTxNCRowHt20BL7T.jpg') repeat-x;
+	background-size: 50%;
+	animation: scroll-anim 10s linear infinite;
+}
+
+.container::after {
+	content: "";
+	width: 100%;
+	height: 32.6vw;
+	position: absolute;
+	background: url('https://raw.githubusercontent.com/Yousuke777/bg/main/sample-bg-01.png') repeat-x;
+	background-size: 50%;
+	animation: scroll-anim 5s linear infinite;
+}
+
+
+@keyframes scroll-anim {
+	100% {
+		background-position: -100% 0;
+	}
+}
+  </style>
+
+  
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
 </head>
 
-<body translate="no">
-  <h1 class="jt --debug">
-  <span class="jt__row">
-    <span class="jt__text">CodeClimbers</span>
-  </span>
-  <span class="jt__row jt__row--sibling" aria-hidden="true">
-    <span class="jt__text">CodeClimbers</span>
-  </span>
-  <span class="jt__row jt__row--sibling" aria-hidden="true">
-    <span class="jt__text">CodeClimbers</span>
-  </span>
-  <span class="jt__row jt__row--sibling" aria-hidden="true">
-    <span class="jt__text">CodeClimbers</span>
-  </span>
-</h1>
-  
-      <script id="rendered-js" >
-// https://codepen.io/sandstedt/pen/GRZeywP?editors=1000
-//# sourceURL=pen.js
-    </script>
+<body>
+  <div class="container"></div>
 
-<script type="text/javascript">
-  // Wait for 4 seconds (4000 milliseconds) and then redirect to the GitHub page
-  setTimeout(function() {
-      window.location.href = "https://bobthefarmer.github.io/VACTQ-Typing-Game/mat";
-  }, 4000);
-</script>
+<p class="link"><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM38nZk4ooWnGFKFCekI_7yUSpkfqvDyP98g&usqp=CAU" target="_blank" rel="noopener">CSS | Infinite scrolling of background image | ONE NOTES</a></p>
+  
+  
 </body>
 
 </html>
