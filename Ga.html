@@ -1,80 +1,80 @@
 
 <!DOCTYPE html>
-<html lang='en' class=''>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 on CodePen</title>
 
-<head>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font: 110%/1.5 system-ui, sans-serif;
+        background: #131417;
+        color: white;
+        height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+      main {
+        max-width: 350px;
+      }
+      a {
+        color: #56bbf9;
+      }
+      h1 {
+        margin-block-end: 0.2em;
+      }
+      output {
+        font-size: 90%;
+        opacity: 60%;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+    </style>
+  </head>
 
-  <meta charset='UTF-8'>
-  <title>CodePen Demo</title>
+  <body>
+    <main>
+      <h1>404</h1>
 
-  <meta name="robots" content="noindex">
+<output>Page Not Found</output>
 
-  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
-  <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
-  <link rel="canonical" href="https://codepen.io/gigtieup/pen/RwvNKad">
+<p>
+  Unable to render Embed Preview. It's likely that the preview expired, so try
+  refreshing or re-running.
+</p>
 
-  
-  
+<ul>
+  <li>
+    <a href="#0" onClick="window.location.reload()">Refresh</a>
+  </li>
+  <li>
+    <a href="/" target="_top" rel="noopener noreferrer">Go to CodePen</a>
+  </li>
+  <li>
+    <a href="/support/" target="_top" rel="noopener noreferrer"
+      >Contact Support</a
+    >
+  </li>
+  <li>
+    <a
+      href="https://blog.codepen.io/documentation/"
+      target="_top"
+      rel="noopener noreferrer"
+      >Visit&nbsp;Documentation</a
+    >
+  </li>
+</ul>
 
-  <style id="INLINE_PEN_STYLESHEET_ID">
-    body {
-	padding: 0;
-	margin: 0;
-}
+<script>
+  window && window.parent && window.parent.postMessage('404', '*');
+</script>
 
-.link {
-	padding: 0 10px;
-}
-
-.container {
-	width: 100%;
-	height: 32.6vw;
-	background: url('') repeat-x;
-	background-size: 50%;
-	animation: scroll-anim 15s linear infinite;
-}
-
-.container::before {
-	content: "";
-	width: 100%;
-	height: 92.6vw;
-	position: absolute;
-	background: url('https://t3.ftcdn.net/jpg/03/38/86/46/360_F_338864640_S2uVXvpn7ZnilgD8WTxNCRowHt20BL7T.jpg') repeat-x;
-	background-size: 50%;
-	animation: scroll-anim 10s linear infinite;
-}
-
-.container::after {
-	content: "";
-	width: 100%;
-	height: 32.6vw;
-	position: absolute;
-	background: url('https://raw.githubusercontent.com/Yousuke777/bg/main/sample-bg-01.png') repeat-x;
-	background-size: 50%;
-	animation: scroll-anim 5s linear infinite;
-}
-
-
-@keyframes scroll-anim {
-	100% {
-		background-position: -100% 0;
-	}
-}
-  </style>
-
-  
-<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
-<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js"></script>
-<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
-<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
-</head>
-
-<body>
-  <div class="container"></div>
-
-<p class="link"><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM38nZk4ooWnGFKFCekI_7yUSpkfqvDyP98g&usqp=CAU" target="_blank" rel="noopener">CSS | Infinite scrolling of background image | ONE NOTES</a></p>
-  
-  
-</body>
-
+    </main>
+  </body>
 </html>
