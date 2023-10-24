@@ -59,87 +59,77 @@
 
 <body>
   <div class="container"></div>
-  
+  <canvas id="animationCanvas" width="800" height="600"></canvas>
+  <script>
+	const canvas = document.getElementById("animationCanvas");
+	const ctx = canvas.getContext("2d");
+
+	const characterWidth = 30;
+	const characterHeight = 30;
+	const characters = [
+		{ x: 0, y: 250, key: "A" },
+		{ x: 0, y: 300, key: "S" },
+		{ x: 0, y: 350, key: "D" },
+		{ x: 0, y: 400, key: "F" }
+	];
+
+	const characterSpeed = canvas.width * 0.01;
+
+	const keysPressed = {};
+
+	function drawCharacters() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		for (let i = 0; i < characters.length; i++) {
+			const character = characters[i];
+			ctx.fillStyle = "black";
+			ctx.fillRect(character.x, character.y, characterWidth, characterHeight);
+		}
+	}
+
+	function moveCharacter(character) {
+		character.x += characterSpeed;
+
+		if (character.x > canvas.width) {
+			character.x = 0;
+		}
+	}
+
+	function handleKeyPress(event) {
+		const key = event.key.toUpperCase();
+		characters.forEach((character) => {
+			if (character.key === key) {
+				keysPressed[key] = true;
+			}
+		});
+	}
+
+	function handleKeyRelease(event) {
+		const key = event.key.toUpperCase();
+		characters.forEach((character) => {
+			if (character.key === key) {
+				keysPressed[key] = false;
+			}
+		});
+	}
+
+	function update() {
+		characters.forEach((character) => {
+			if (keysPressed[character.key]) {
+				moveCharacter(character);
+			}
+		});
+
+		drawCharacters();
+		requestAnimationFrame(update);
+	}
+
+	document.addEventListener("keydown", handleKeyPress);
+	document.addEventListener("keyup", handleKeyRelease);
+
+	update();
+</script>
   
 </body>
 
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Character Animation</title>
-</head>
-<body>
-    <canvas id="animationCanvas" width="800" height="600"></canvas>
-    
-    <script>
-        const canvas = document.getElementById("animationCanvas");
-        const ctx = canvas.getContext("2d");
-
-        const characterWidth = 30;
-        const characterHeight = 30;
-        const characters = [
-            { x: 0, y: 250, key: "A" },
-            { x: 0, y: 300, key: "S" },
-            { x: 0, y: 350, key: "D" },
-            { x: 0, y: 400, key: "F" }
-        ];
-
-        const characterSpeed = canvas.width * 0.01;
-
-        const keysPressed = {};
-
-        function drawCharacters() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (let i = 0; i < characters.length; i++) {
-                const character = characters[i];
-                ctx.fillStyle = "black";
-                ctx.fillRect(character.x, character.y, characterWidth, characterHeight);
-            }
-        }
-
-        function moveCharacter(character) {
-            character.x += characterSpeed;
-
-            if (character.x > canvas.width) {
-                character.x = 0;
-            }
-        }
-
-        function handleKeyPress(event) {
-            const key = event.key.toUpperCase();
-            characters.forEach((character) => {
-                if (character.key === key) {
-                    keysPressed[key] = true;
-                }
-            });
-        }
-
-        function handleKeyRelease(event) {
-            const key = event.key.toUpperCase();
-            characters.forEach((character) => {
-                if (character.key === key) {
-                    keysPressed[key] = false;
-                }
-            });
-        }
-
-        function update() {
-            characters.forEach((character) => {
-                if (keysPressed[character.key]) {
-                    moveCharacter(character);
-                }
-            });
-
-            drawCharacters();
-            requestAnimationFrame(update);
-        }
-
-        document.addEventListener("keydown", handleKeyPress);
-        document.addEventListener("keyup", handleKeyRelease);
-
-        update();
-    </script>
-</body>
 </html>
