@@ -1,4 +1,87 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Typing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #character {
+            position: absolute;
+            top: 290px;
+            left: 1.7in;
+            width: 100px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            transition: left 6s linear; /* Slow initial pace */
+            transform: rotate(-0deg);
+        }
+    </style>
+</head>
+<body>
+    <h1>Type the word: <span id="targetWord">HELLO</span></h1>
+    <input type="text" id="wordInput">
+    <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character" alt="Character">
+    
+    <script>
+        const character = document.getElementById("character");
+        const targetWord = document.getElementById("targetWord");
+        const wordInput = document.getElementById("wordInput");
+        let correctWordsCount = 0;
+
+        // Listen for input changes
+        wordInput.addEventListener("input", checkWord);
+
+        function checkWord() {
+            const inputText = wordInput.value.toUpperCase();
+            const targetText = targetWord.innerText;
+
+            if (inputText == targetText) {
+                correctWordsCount++;
+                wordInput.value = ""; // Clear the input
+
+                if (correctWordsCount == 1) {
+                    // Give a little boost when 4 words are typed correctly
+                    character.style.transition = "left 2s linear";
+                    character.style.left = "10%";
+                    correctWordsCount = 1;
+                } else {
+                    // Incrementally boost the character
+                    const currentLeft = parseFloat(character.style.left);
+                    character.style.left = currentLeft + 5 + "%";
+                }
+                if (correctWordsCount == 2) {
+                    // Give a little boost when 4 words are typed correctly
+                    character.style.transition = "left 2s linear";
+                    character.style.left = "20%";
+                    correctWordsCount = 2;
+                } else {
+                    // Incrementally boost the character
+                    const currentLeft = parseFloat(character.style.left);
+                    character.style.left = currentLeft + 5 + "%";
+                }
+                
+                generateRandomWord();
+            }
+        }
+
+        // Function to generate a random word for the user to type
+        function generateRandomWord() {
+            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVA"];
+            const randomIndex = Math.floor(Math.random() * words.length);
+            targetWord.innerText = words[randomIndex];
+        }
+
+        // Initialize the game
+        generateRandomWord();
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
 <html lang='en' class=''>
 
 <head>
@@ -59,7 +142,8 @@
   <div class="container"></div>
 
 <p class="link"><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM38nZk4ooWnGFKFCekI_7yUSpkfqvDyP98g&usqp=CAU" target="_blank" rel="noopener">CSS | Infinite scrolling of background image | ONE NOTES</a></p>
-  
+
+
   
 </body>
 
