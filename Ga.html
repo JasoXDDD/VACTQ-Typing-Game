@@ -45,19 +45,8 @@
 
                 if (correctWordsCount == 1) {
                     // Give a little boost when 4 words are typed correctly
-                    character.style.transition = "left 2s linear";
-                    character.style.left = "10%";
+                    moveCar(10);
                     correctWordsCount = 1;
-                } else {
-                    // Incrementally boost the character
-                    const currentLeft = parseFloat(character.style.left);
-                    character.style.left = currentLeft + 5 + "%";
-                }
-                if (correctWordsCount == 2) {
-                    // Give a little boost when 4 words are typed correctly
-                    character.style.transition = "left 2s linear";
-                    character.style.left = "20%";
-                    correctWordsCount = 2;
                 } else {
                     // Incrementally boost the character
                     const currentLeft = parseFloat(character.style.left);
@@ -66,6 +55,12 @@
                 
                 generateRandomWord();
             }
+        }
+
+        // Function to move the car by updating its left position
+        function moveCar(distance) {
+            const currentLeft = parseFloat(character.style.left) || 0;
+            character.style.left = (currentLeft + distance) + "%";
         }
 
         // Function to generate a random word for the user to type
@@ -80,6 +75,7 @@
     </script>
 </body>
 </html>
+
 
 <!DOCTYPE html>
 <html lang='en' class=''>
