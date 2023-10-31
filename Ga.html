@@ -24,6 +24,8 @@
 <body>
     <h1>Type the word: <span id="targetWord">HELLO</span></h1>
     <input type="text" id="wordInput">
+	<input type="number" id="xCoordinateInput" placeholder="X Coordinate">
+    <button onclick="moveCharacterToX()">Move to X</button>
     <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character" alt="Character">
     
     <script>
@@ -58,9 +60,15 @@
         }
 
         // Function to move the car by updating its left position
-        function moveCar(distance) {
+        function moveCar(position) {
             const currentLeft = parseFloat(character.style.left) || 0;
-            character.style.left = (currentLeft + distance) + "%";
+            character.style.x = position;
+        }
+
+		        // Function to move the character to an inputted X coordinate position
+				function moveCharacterToX() {
+            const newX = xCoordinateInput.value;
+            character.style.left = newX + "px";
         }
 
         // Function to generate a random word for the user to type
