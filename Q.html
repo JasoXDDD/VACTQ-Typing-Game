@@ -26,3 +26,41 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image to PNG</title>
+</head>
+<body>
+  <input type="text" id="imageUrl" placeholder="Enter image URL">
+  <button onclick="convertToPNG()">Convert to PNG</button>
+  
+  <script>
+    function convertToPNG() {
+      const imageUrl = document.getElementById("imageUrl").value;
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+
+      img.crossOrigin = "anonymous"; // Ensure cross-origin image loading
+
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+
+        // Convert canvas to a data URL with PNG format
+        const dataURL = canvas.toDataURL("image/png");
+
+        // Create a download link for the PNG
+        const downloadLink = document.createElement("a");
+        downloadLink.href = dataURL;
+        downloadLink.download = "image.png";
+        downloadLink.click();
+      };
+
+      img.src = imageUrl;
+    }
+  </script>
+</body>
+</html>
