@@ -10,67 +10,129 @@
             text-align: center;
         }
 
-        #character {
+        .character {
             position: absolute;
             top: 290px;
-            left: 1.7in;
+            left: 100px;
             width: 100px; /* Adjust the width as needed */
             height: auto; /* Maintain aspect ratio */
-            transition: left 6s linear; /* Slow initial pace */
+            transition: left 3s linear; /* Slow initial pace */
             transform: rotate(-0deg);
+            z-index: 1;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 0px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+        }
+        h2 {
+            margin: 10px 0;
+            font-size: 40px;
+        }
+        .textbox {
+            font-size: 25px;
+            width: 50%;
+            padding: 12px;
+            margin: 8px 0 30px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            text-align: center;
+            z-index: 100;
         }
     </style>
 </head>
 <body>
-    <h1>Type the word: <span id="targetWord">HELLO</span></h1>
-    <input type="text" id="wordInput">
-    <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character" alt="Character">
+    <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character1" alt="Character" class="character" style="top:430px">
+    <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character2" alt="Character" class="character" style="top:530px">
+    <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character3" alt="Character" class="character" style="top:630px">
+    <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character4" alt="Character" class="character"  style="top:730px">
+
+    <h2 id="typing-text">Loading...</h2>
+    <input id="typing-box"class="textbox" placeholder="">
+    <div class="footer">
+
+    </div>
+      <script src="typingsystem.js"></script>
+      <script>
+        class Player {
+          constructor(index) {
+              this.progress = 0;
+              this.index = index;
+              console.log(index);
+          }
+          
+          getProgress() {
+            return this.progress;
+          }
+
+          update(positionData) {
+              this.progress = positionData[this.index];
+          }
+      }
+      
+      function moveCharacterToX(index, pos) {
+          document.getElementById("character" + index).style.left = pos + "px";
+      }
+      
+      //Customizable game rules
+      const numberOfPlayers = 4;
+      const tickRate = 3000;
+
+      //Initialize frontend player objects
+      let players = [];
+      for(let i = 0; i < numberOfPlayers; i++) {
+          let player = new Player(i);
+          players.push(player);
+      }
+
+      async function getAPIData() {
+        try {
+            const response = await fetch('http://localhost:8085/api/ptest/');
+            //console.log(response);
+            const data = await response.json();
     
-    <script>
-        const character = document.getElementById("character");
-        const targetWord = document.getElementById("targetWord");
-        const wordInput = document.getElementById("wordInput");
-        let correctWordsCount = 0;
-
-        // Listen for input changes
-        wordInput.addEventListener("input", checkWord);
-
-        function checkWord() {
-            const inputText = wordInput.value.toUpperCase();
-            const targetText = targetWord.innerText;
-
-            if (inputText == targetText) {
-                correctWordsCount++;
-                wordInput.value = ""; // Clear the input
-
-                if (correctWordsCount == 1) {
-                    // Give a little boost when 4 words are typed correctly
-                    moveCar(10);
-                    correctWordsCount = 1;
-                } else {
-                    // Incrementally boost the character
-                    const currentLeft = parseFloat(character.style.left);
-                    character.style.left = currentLeft + 5 + "%";
-                }
-                
-                generateRandomWord();
+            // Extract positions and store in a list
+            const positions = data.map(item => item.pos);
+    
+            return positions;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    
+      
+      function updatePositions(positionData) {
+        for(let i = 0; i < numberOfPlayers; i++) {
+          players[i].update(positionData);
+        }
+      }
+      
+      //Game Loop
+      async function tick() {
+          data = await getAPIData();
+          //console.log(data);
+          updatePositions(data);
+      
+          //Update cars animations
+          for(let i = 0; i < numberOfPlayers; i++) {
+            if(players[i].getProgress() != -1) {
+              moveCharacterToX(i + 1, players[i].getProgress());
+            } else {
+              moveCharacterToX(i+1, 100);
             }
-        }
-		        // Function to move the character to an inputted X coordinate position
-				function moveCharacterToX(pos) {
-            character.style.left = pos + "px";
-        }
-
-        // Function to generate a random word for the user to type
-        function generateRandomWord() {
-            const words = ["HELLO", "WORLD", "HTML", "CSS", "JAVA"];
-            const randomIndex = Math.floor(Math.random() * words.length);
-            targetWord.innerText = words[randomIndex];
-        }
-
-        // Initialize the game
-        generateRandomWord();
-    </script>
+          }
+      }
+      
+      let interval = setInterval(tick, tickRate);
+      </script>
 </body>
 </html>
 
@@ -108,7 +170,8 @@
 	position: absolute;
 	background: url('https://static.vecteezy.com/system/resources/previews/023/454/129/original/empty-asphalt-road-four-lanes-in-isolated-on-transparent-background-straight-road-line-png.png') repeat-x;
 	background-size: 90%;
-	animation: scroll-anim 10s linear infinite;
+	animation: scroll-anim 4s linear infinite;
+  margin-left:-800px;
 }
 
 
@@ -126,8 +189,3 @@
   <div class="container"></div>
 
 
-
-  
-</body>
-
-</html>

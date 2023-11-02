@@ -13,10 +13,16 @@ class Player {
     }
 }
 
+function moveCharacterToX(index, pos) {
+    document.getElementById("character" + index).style.left = pos + "px";
+    print("a");
+}
+moveCharacterToX(1, 50);
+
 //Customizable game rules
 const numberOfPlayers = 4;
 const tickRate = 1000;
-
+print("ab");
 //Initialize frontend player objects
 let players = [];
 for(let i = 0; i < numberOfPlayers; i++) {
@@ -39,7 +45,7 @@ function tick() {
     updatePositions(getAPIData());
 
     //Update cars animations
-    
+    moveCharacterToX(1, 50);
 }
 
 let interval = setInterval(tick, tickRate);
