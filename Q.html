@@ -4,14 +4,25 @@
   <title>Canvas Screen Capture</title>
 </head>
 <body>
-  <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000;">
-  </canvas>
+  <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000;"></canvas>
+  <input type="text" id="userText" placeholder="Enter text">
   <button onclick="captureCanvas()">Capture Canvas</button>
 
   <script>
     function captureCanvas() {
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
+
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Get user input text
+      const userText = document.getElementById("userText").value;
+
+      // Draw the user input text on the canvas
+      ctx.fillStyle = "black";
+      ctx.font = "24px Arial";
+      ctx.fillText(userText, 50, 50);
 
       // Convert the canvas to a data URL
       const dataURL = canvas.toDataURL("image/png");
@@ -26,6 +37,7 @@
   </script>
 </body>
 </html>
+
 <!DOCTYPE html>
 <html>
 <head>
