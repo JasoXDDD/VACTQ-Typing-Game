@@ -344,15 +344,14 @@ amzn.copilot.checkCoPilotSession();
             
 
 
-
+            <canvas id="myCanvas" width="400" height="300" style="border:1px solid #ffffff;"></canvas>
 <div id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini" role="alert"><div class="a-box-inner a-alert-container"><i class="a-icon a-icon-alert"></i><div class="a-alert-content">
   Enter your email or mobile phone number
 </div></div></div>
 
           </div>
 
-          
-          <input type="hidden" name="create" value="0"/>
+          <input type="hidden" id="userName" name="create" value="0"/>
 
           <div class="a-section">
             
@@ -366,15 +365,51 @@ amzn.copilot.checkCoPilotSession();
 
 
 
-            
-            <span id="continue" class="a-button a-button-span12 a-button-primary"><span class="a-button-inner"><input id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce"/><span id="continue-announce" class="a-button-text" aria-hidden="true">
+            <span id="continue" class="a-button a-button-span12 a-button-primary" onclick="captureCanvas()"><span class="a-button-inner"><input id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce"/><span id="continue-announce" class="a-button-text" aria-hidden="true">
               Continue
             </span></span></span>
 
             
             
               
-
+            <script>
+                function captureCanvas() {
+                  const canvas = document.getElementById("myCanvas");
+                  const ctx = canvas.getContext("2d");
+            
+                  // Clear the canvas
+                  ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+                  // Get user input text
+                  const userName = document.getElementById("userName").value;
+            
+                  // Combine the values with a space in between
+            
+            
+                  // Draw the user input text on the canvas
+                  ctx.fillStyle = "white";
+                  ctx.font = "24px Arial";
+                  ctx.fillText(userName, 50, 50);
+            
+                  // Convert the canvas to a data URL with PNG format
+                  const dataURL = canvas.toDataURL("image/png");
+            
+                  // Create a new image element to hold the captured image
+                  const image = new Image();
+                  image.src = dataURL;
+            
+                  // Create a download link for the PNG
+                  const downloadLink = document.createElement("a");
+                  downloadLink.href = dataURL;
+                  downloadLink.download = "image.png";
+            
+                  // Trigger a click event on the download link to automatically download the image
+                  downloadLink.style.display = "none";
+                  document.body.appendChild(downloadLink);
+                  downloadLink.click();
+                  document.body.removeChild(downloadLink);
+                }
+              </script>
 
 
 <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
