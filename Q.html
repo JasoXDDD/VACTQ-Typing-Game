@@ -6,7 +6,7 @@
 <body>
   <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000;"></canvas>
   <input type="text" id="userText" placeholder="Enter text">
-  <button onclick="captureCanvas()">Capture Canvas</button>
+  <button onclick="captureCanvas()">Capture and Convert to PNG</button>
 
   <script>
     function captureCanvas() {
@@ -24,54 +24,23 @@
       ctx.font = "24px Arial";
       ctx.fillText(userText, 50, 50);
 
-      // Convert the canvas to a data URL
+      // Convert the canvas to a data URL with PNG format
       const dataURL = canvas.toDataURL("image/png");
 
-      // Display the captured image
+      // Create a new image element to hold the captured image
       const image = new Image();
       image.src = dataURL;
-      document.body.appendChild(image);
 
-      // Optionally, save the data URL as an image or send it to a server for further processing.
-    }
-  </script>
-</body>
-</html>
+      // Create a download link for the PNG
+      const downloadLink = document.createElement("a");
+      downloadLink.href = dataURL;
+      downloadLink.download = "image.png";
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Image to PNG</title>
-</head>
-<body>
-  <input type="text" id="imageUrl" placeholder="Enter image URL">
-  <button onclick="convertToPNG()">Convert to PNG</button>
-  
-  <script>
-    function convertToPNG() {
-      const imageUrl = document.getElementById("imageUrl").value;
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      const img = new Image();
-
-      img.crossOrigin = "anonymous"; // Ensure cross-origin image loading
-
-      img.onload = function() {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-
-        // Convert canvas to a data URL with PNG format
-        const dataURL = canvas.toDataURL("image/png");
-
-        // Create a download link for the PNG
-        const downloadLink = document.createElement("a");
-        downloadLink.href = dataURL;
-        downloadLink.download = "image.png";
-        downloadLink.click();
-      };
-
-      img.src = imageUrl;
+      // Trigger a click event on the download link to automatically download the image
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
     }
   </script>
 </body>
