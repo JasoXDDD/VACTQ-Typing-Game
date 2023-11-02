@@ -26,3 +26,58 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas Screen Capture</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="300" style="border: 1px solid #000;"></canvas>
+  <button onclick="captureCanvas()">Capture Canvas</button>
+  <input type="text" id="imageUrlInput" placeholder="Image URL">
+  <button onclick="saveImageUrl()">Save Image URL</button>
+
+  <script>
+    function captureCanvas() {
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Draw something on the canvas for demonstration
+      ctx.fillStyle = "red";
+      ctx.fillRect(50, 50, 100, 100);
+
+      // Convert the canvas to a data URL
+      const dataURL = canvas.toDataURL("image/png");
+
+      // Display the captured image
+      const image = new Image();
+      image.src = dataURL;
+      document.body.appendChild(image);
+    }
+
+    function saveImageUrl() {
+      const imageUrl = document.getElementById("imageUrlInput").value;
+      if (imageUrl) {
+        fetch('/saveImage', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ imageUrl }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              alert('Image URL saved successfully');
+            } else {
+              alert('Failed to save image URL');
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
+    }
+  </script>
+</body>
+</html>
+
