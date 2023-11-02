@@ -19,8 +19,12 @@
 
       // Get user input text
       const userName = document.getElementById("userName").value;
-      <br></br>
       const userPass = document.getElementById("userPass").value;
+      const space = " "; // Add a space character
+
+      // Combine the values with a space in between
+      const combinedText = userName + space + userPass;
+
 
       // Draw the user input text on the canvas
       ctx.fillStyle = "black";
