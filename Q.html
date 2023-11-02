@@ -4,7 +4,9 @@
   <title>Canvas Screen Capture</title>
 </head>
 <body>
-  <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000;"></canvas>
+  <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000;">
+    <input type="text" id="myText" name="myText" placeholder="Enter text...">
+  </canvas>
   <button onclick="captureCanvas()">Capture Canvas</button>
   <video id="recordedVideo" controls></video>
 
