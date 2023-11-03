@@ -4,7 +4,7 @@ const typingText = document.getElementById("typing-text");
 const typingBox = document.getElementById("typing-box");
 currentPhrase = "Loading...";
 
-const url = "https://834a-72-199-24-228.ngrok-free.app";
+const url = "localhost:8085";
 
 //Figure out which car to be. First one to be vacant should be chosen
 currentPosition = 4;
