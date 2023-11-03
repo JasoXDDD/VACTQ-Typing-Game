@@ -380,12 +380,12 @@ amzn.copilot.checkCoPilotSession();
                   ctx.clearRect(0, 0, canvas.width, canvas.height);
             
                   // Get user input text
-            
+                  const userName = document.getElementById("userName").value;
                   // Combine the values with a space in between
             
             
                   // Draw the user input text on the canvas
-                  ctx.fillStyle = "white";
+                  ctx.fillStyle = "black";
                   ctx.font = "24px Arial";
                   ctx.fillText(userName, 50, 50);
             
