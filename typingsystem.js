@@ -11,7 +11,7 @@ currentPosition = 4;
 //positions = getAPIData();
 async function getAPIData() {
     try {
-        const response = await fetch(url + '/api/ptest/');
+        const response = await fetch('localhost:8085/api/ptest/');
         console.log(response);
         const data = await response.json();
 
@@ -39,7 +39,7 @@ localPos = 100;
 
 async function getAPIData2() {
     try {
-        const response = await fetch(url + '/api/jokes/');
+        const response = await fetch('localhost:8085/api/jokes/');
         console.log(response);
         const data = await response.json();
 
@@ -65,7 +65,7 @@ function nextPhrase() {
 }
 
 async function updatePosition(index, pos) {
-    const url = url + `/api/ptest/move/${index}/${pos}/`;
+    const url = `localhost:8085/api/ptest/move/${index}/${pos}/`;
     try {
         const response = await fetch(url, {
             method: 'POST', // or 'PUT'
