@@ -36,7 +36,46 @@
             z-index: 100;
         }
     </style>
-</head>
+    <style id="INLINE_PEN_STYLESHEET_ID">
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      
+      .link {
+        padding: 0 0px;
+      }
+      
+      .container {
+        width: 100%;
+        height: 32.6vw;
+        background: url('https://t3.ftcdn.net/jpg/03/38/86/46/360_F_338864640_S2uVXvpn7ZnilgD8WTxNCRowHt20BL7T.jpg') repeat-x;
+        background-size: 70%;
+        animation: scroll-anim 50s linear infinite;
+      }
+      
+      .container::after {
+        content: "";
+        margin-top: 111px;
+        width: 100%;
+        height: 52.6vw;
+        position: absolute;
+        background: url('https://static.vecteezy.com/system/resources/previews/023/454/129/original/empty-asphalt-road-four-lanes-in-isolated-on-transparent-background-straight-road-line-png.png') repeat-x;
+        background-size: 90%;
+        animation: scroll-anim 4s linear infinite;
+        margin-left:-800px;
+      }
+      
+      
+      @keyframes scroll-anim {
+        100% {
+          background-position: -1000% 0;
+        }
+      }
+    </style>
+  
+  
+  </head>
 <body>
     <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character1" alt="Character" class="character" style="top:430px">
     <img src="https://static.vecteezy.com/system/resources/previews/019/055/307/original/sport-car-isolated-on-transparent-background-3d-rendering-illustration-png.png" id="character2" alt="Character" class="character" style="top:530px">
@@ -45,7 +84,8 @@
 
     <h2 id="typing-text">Loading...</h2>
     <input id="typing-box"class="textbox" placeholder="">
-
+    <div class="container"></div>
+    
     <script src="typingsystem.js"></script>
     <script>
       class Player {
@@ -62,115 +102,62 @@
         update(positionData) {
             this.progress = positionData[this.index];
         }
-    }
-    
-    function moveCharacterToX(index, pos) {
-        document.getElementById("character" + index).style.left = pos + "px";
-    }
-    
-    //Customizable game rules
-    const numberOfPlayers = 4;
-    const tickRate = 3000;
-
-    //Initialize frontend player objects
-    let players = [];
-    for(let i = 0; i < numberOfPlayers; i++) {
-        let player = new Player(i);
-        players.push(player);
-    }
-
-    async function getAPIData() {
-      try {
-          const response = await fetch('http://localhost:8085/api/ptest/');
-          //console.log(response);
-          const data = await response.json();
-  
-          // Extract positions and store in a list
-          const positions = data.map(item => item.pos);
-  
-          return positions;
-      } catch (error) {
-          console.error('Error:', error);
       }
-  }
-  
-    
-    function updatePositions(positionData) {
+      
+      function moveCharacterToX(index, pos) {
+          document.getElementById("character" + index).style.left = pos + "px";
+      }
+      
+      //Customizable game rules
+      const numberOfPlayers = 4;
+      const tickRate = 3000;
+
+      //Initialize frontend player objects
+      let players = [];
       for(let i = 0; i < numberOfPlayers; i++) {
-        players[i].update(positionData);
+          let player = new Player(i);
+          players.push(player);
       }
-    }
+
+      async function getAPIData() {
+        try {
+            const response = await fetch(url+'/api/ptest/');
+            //console.log(response);
+            const data = await response.json();
     
-    //Game Loop
-    async function tick() {
-        data = await getAPIData();
-        //console.log(data);
-        updatePositions(data);
+            // Extract positions and store in a list
+            const positions = data.map(item => item.pos);
     
-        //Update cars animations
-        for(let i = 0; i < numberOfPlayers; i++) {
-          if(players[i].getProgress() != -1) {
-            moveCharacterToX(i + 1, players[i].getProgress());
-          } else {
-            moveCharacterToX(i+1, 100);
-          }
+            return positions;
+        } catch (error) {
+            console.error('Error:', error);
         }
     }
     
-    let interval = setInterval(tick, tickRate);
+      
+      function updatePositions(positionData) {
+        for(let i = 0; i < numberOfPlayers; i++) {
+          players[i].update(positionData);
+        }
+      }
+      
+      //Game Loop
+      async function tick() {
+          data = await getAPIData();
+          //console.log(data);
+          updatePositions(data);
+      
+          //Update cars animations
+          for(let i = 0; i < numberOfPlayers; i++) {
+            if(players[i].getProgress() != -1) {
+              moveCharacterToX(i + 1, players[i].getProgress());
+            } else {
+              moveCharacterToX(i+1, 100);
+            }
+          }
+      }
+      
+      let interval = setInterval(tick, tickRate);
     </script>
 </body>
 </html>
-
-
-<!DOCTYPE html>
-<html lang='en' class=''>
-
-<head>
-
-  <meta charset='UTF-8'>
-
-  <style id="INLINE_PEN_STYLESHEET_ID">
-    body {
-	padding: 0;
-	margin: 0;
-}
-
-.link {
-	padding: 0 0px;
-}
-
-.container {
-	width: 100%;
-	height: 32.6vw;
-	background: url('https://t3.ftcdn.net/jpg/03/38/86/46/360_F_338864640_S2uVXvpn7ZnilgD8WTxNCRowHt20BL7T.jpg') repeat-x;
-	background-size: 70%;
-	animation: scroll-anim 50s linear infinite;
-}
-
-.container::after {
-	content: "";
-	margin-top: 111px;
-	width: 100%;
-	height: 52.6vw;
-	position: absolute;
-	background: url('https://static.vecteezy.com/system/resources/previews/023/454/129/original/empty-asphalt-road-four-lanes-in-isolated-on-transparent-background-straight-road-line-png.png') repeat-x;
-	background-size: 90%;
-	animation: scroll-anim 4s linear infinite;
-  margin-left:-800px;
-}
-
-
-@keyframes scroll-anim {
-	100% {
-		background-position: -1000% 0;
-	}
-}
-  </style>
-
-
-</head>
-
-<body>
-  <div class="container"></div>
-
