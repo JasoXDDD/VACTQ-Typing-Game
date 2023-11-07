@@ -102,7 +102,7 @@ chooseCar();
 
 async function getAPIData2() { //function for extracting the phrases from backend
     try {
-        const response = await fetch(url+'/api/jokes/');
+        const response = await fetch(url+'/api/phrases/');
         console.log(response);
         const data = await response.json();
 
